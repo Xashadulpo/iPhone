@@ -9,11 +9,11 @@ import gsap from "gsap";
 
 const Highlights = () => {
   useGSAP(() => {
-    gsap.to(".title", { opacity: 1, duration: 1, y: 0 });
-    gsap.to(".link", { opacity: 1, duration: 1, y: 0, stagger: 0.25 });
+    gsap.to(".title", { opacity: 1,  y: 0 });
+    gsap.to('.link', { opacity: 1, y: 0, duration: 1, stagger: 0.25 })
   }, []);
   return (
-    <section id="highlights" className="w-screen h-full overflow-hidden">
+    <section id="highlights" className="w-screen overflow-hidden h-full common-padding bg-zinc">
       <div className="screen-max-width">
         <div className="mb-12 w-full md:flex items-center justify-between common-padding">
           <h1 className="title section-heading">Get the highlights</h1>
