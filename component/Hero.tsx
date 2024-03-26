@@ -2,6 +2,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useEffect, useState } from "react";
+
 import { heroVideo, smallHeroVideo } from "../utils";
 
 const Hero = () => {
@@ -9,17 +10,13 @@ const Hero = () => {
     window.innerWidth > 760 ? heroVideo : smallHeroVideo
   );
 
-  const handleSrcVdoSet = () => {
-    if (window.innerWidth > 760) {
-      setvdoSrc(heroVideo);
-    } else {
-      setvdoSrc(smallHeroVideo);
-    }
-  };
   useEffect(() => {
-    window.addEventListener("resize", handleSrcVdoSet);
+    const updateVideoSource = () => {
+      setvdoSrc(window.innerWidth > 760 ? heroVideo : smallHeroVideo);
+    };
+    window.addEventListener("resize", updateVideoSource);
     return () => {
-      window.removeEventListener("resize", handleSrcVdoSet);
+      window.removeEventListener("resize", updateVideoSource);
     };
   }, []);
 
@@ -27,6 +24,9 @@ const Hero = () => {
     gsap.to("#hero-title", { opacity: 1, delay: 2 });
     gsap.to("#cta", { opacity: 1, delay: 2, y: -50 });
   });
+
+
+ 
   return (
     <section className="w-full nav-height relative ">
       <div className="w-full h-full flex-center flex-col ">
