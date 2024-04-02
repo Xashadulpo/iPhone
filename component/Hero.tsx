@@ -6,10 +6,9 @@ import { useEffect, useState } from "react";
 import { heroVideo, smallHeroVideo } from "../utils";
 
 const Hero = () => {
-  const [vdoSrc, setvdoSrc] = useState(
+  const [vdoSrc, setvdoSrc] = useState<string>(
     window.innerWidth > 760 ? heroVideo : smallHeroVideo
   );
-
   useEffect(() => {
     const updateVideoSource = () => {
       setvdoSrc(window.innerWidth > 760 ? heroVideo : smallHeroVideo);
@@ -25,8 +24,6 @@ const Hero = () => {
     gsap.to("#cta", { opacity: 1, delay: 2, y: -50 });
   });
 
-
- 
   return (
     <section className="w-full nav-height relative ">
       <div className="w-full h-full flex-center flex-col ">

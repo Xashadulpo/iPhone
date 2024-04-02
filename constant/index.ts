@@ -24,17 +24,17 @@ import {
     },
     {
       id: 2,
-      textLists: ["Titanium.", "So strong. So light. So Pro."],
-      video: highlightSecondVideo,
-      videoDuration: 2,
-    },
-    {
-      id: 3,
       textLists: [
         "iPhone 15 Pro Max has the",
         "longest optical zoom in",
         "iPhone ever. Far out.",
       ],
+      video: highlightSecondVideo,
+      videoDuration: 2,
+    },
+    {
+      id: 3,
+      textLists: ["Titanium.", "So strong. So light. So Pro."],
       video: highlightThirdVideo,
       videoDuration: 5,
     },

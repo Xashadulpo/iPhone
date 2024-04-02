@@ -2,7 +2,7 @@
 
 import { rightImg, watchImg } from "@/utils";
 import { useGSAP } from "@gsap/react";
-import { VideoCarousel } from ".";
+import VideoCarousel from "./VideoCarousel";
 import Image from "next/image";
 import gsap from "gsap";
 

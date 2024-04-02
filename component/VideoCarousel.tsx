@@ -18,9 +18,9 @@ const VideoCarousel = () => {
   });
   const [loadedData, setLoadedData] = useState<number[]>([]);
 
-  const videoRef = useRef<(HTMLVideoElement | null)[]>([]);
-  const videoDivRef = useRef<(HTMLSpanElement | null)[]>([]);
-  const videoSpanRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const videoRef = useRef<HTMLVideoElement[]>([]);
+  const videoDivRef = useRef<HTMLSpanElement[]>([]);
+  const videoSpanRef = useRef<HTMLSpanElement[]>([]);
 
   const { videoId, startPlay, isPlaying, isEnd, isLastVideo } = video;
 
@@ -56,22 +56,6 @@ const VideoCarousel = () => {
       tl.kill(); // Kill the timeline when component unmounts
     };
   }, [isEnd, videoId]);
-
-  // useGSAP(() => {
-  //   gsap.to("#video", {
-  //     scrollTrigger: {
-  //       trigger: "#video",
-  //       toggleActions: " restart none none none",
-  //     },
-  //     onComplete: () => {
-  //       setVideo((pre) => ({
-  //         ...pre,
-  //         isPlaying: true,
-  //         startPlay: true,
-  //       }));
-  //     },
-  //   });
-  // }, [isEnd, videoId]);
 
   // when the video switch
   useEffect(() => {
@@ -124,7 +108,7 @@ const VideoCarousel = () => {
         const animeUpdate = () => {
           anime.progress(
             videoRefCurrent.currentTime / highlightSlide.videoDuration
-          )
+          );
         };
 
         if (isPlaying) {
@@ -153,10 +137,12 @@ const VideoCarousel = () => {
   const handleLoadedMetaData = (i: number, e: any) =>
     setLoadedData((pre) => [...pre, e]);
 
-  const handleProcess = (type: string , i?:number) => {
+  const handleProcess = (type: string, i?: number) => {
     switch (type) {
       case "video-end":
-        setVideo((pre): VideoType => ({ ...pre, isEnd: true ,videoId: i! +1}));
+        setVideo(
+          (pre): VideoType => ({ ...pre, isEnd: true, videoId: i! + 1 })
+        );
         break;
       case "last-video":
         setVideo((pre): VideoType => ({ ...pre, isLastVideo: true }));
@@ -196,9 +182,11 @@ const VideoCarousel = () => {
                   onPlay={() =>
                     setVideo((preVideo) => ({ ...preVideo, isPlaying: true }))
                   }
-                  onEnded = {()=>{
-                    i!==3 ?  handleProcess("video-end",i) :handleProcess("last-video") 
-                  }} 
+                  onEnded={() => {
+                    i !== 3
+                      ? handleProcess("video-end", i)
+                      : handleProcess("last-video");
+                  }}
                   onLoadedMetadata={(e) => handleLoadedMetaData(i, e)}
                 />
               </div>
