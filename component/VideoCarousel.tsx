@@ -8,7 +8,7 @@ import { VideoType } from "@/types";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const VideoCarousel = () => {
-  const [video, setVideo] = useState<VideoType>({
+  const [video, setVideo] = useState({
     videoId: 0,
     startPlay: false,
     isPlaying: false,
@@ -191,20 +191,20 @@ const VideoCarousel = () => {
                   onLoadedMetadata={(e) => handleLoadedMetaData(i, e)}
                 />
               </div>
-              <div className="absolute top-12 left-[5%] z-10">
+               <div className="absolute top-12 left-[5%] z-10">
                 {list.textLists.map((texts) => (
                   <p key={texts} className="md:text-2xl text-xl font-medium">
                     {texts}
                   </p>
                 ))}
-              </div>
+              </div> 
             </div>
           </div>
         ))}
       </div>
       <div className="relative flex-center mt-10">
-        <div className="flex-center py-5 px-7 bg-gray-300 backdrop-blur rounded-full">
-          {videoRef.current.map((_, i) => (
+         <div className="flex-center py-5 px-7 bg-gray-300 backdrop-blur rounded-full">
+          {hightlightsSlides.map((_, i) => (
             <span
               key={i}
               className="mx-2 w-3 h-3 bg-gray-200 rounded-full relative cursor-pointer"
@@ -216,23 +216,21 @@ const VideoCarousel = () => {
               />
             </span>
           ))}
-        </div>
-        <button className="control-btn">
+        </div> 
+         <button className="control-btn">
           <Image
             fill
             src={isLastVideo ? replayImg : !isPlaying ? playImg : pauseImg}
-            alt={
-              isLastVideo ? "replayImg" : !isPlaying ? "playImg" : "pauseImg"
-            }
+            alt="img"
             onClick={() => {
               isLastVideo
-                ? handleProcess("video-reset")
-                : !isPlaying
-                ? handleProcess("play")
-                : handleProcess("pause");
-            }}
+                  ? handleProcess("video-reset")
+                  : !isPlaying
+                  ? handleProcess("play")
+                  : handleProcess("pause");
+          }}
           />
-        </button>
+        </button>  
       </div>
     </>
   );

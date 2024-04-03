@@ -5,11 +5,14 @@ import { useGSAP } from "@gsap/react";
 import VideoCarousel from "./VideoCarousel";
 import Image from "next/image";
 import gsap from "gsap";
+import dynamic from "next/dynamic";
 
+const Dynamicvdo = dynamic(() => import("../component/VideoCarousel"), {
+  ssr: false,
+}) as React.FC; 
 
 const Highlights = () => {
 
- 
 
   useGSAP(() => {
     gsap.to(".title", { opacity: 1,  y: 0 });
@@ -43,7 +46,7 @@ const Highlights = () => {
             </p>
           </div>
         </div>
-        <VideoCarousel/>
+        <Dynamicvdo/>
       </div>
     </section>
   );

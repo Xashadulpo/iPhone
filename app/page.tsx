@@ -1,15 +1,21 @@
-import React from "react";
-import { Hero, Highlights,Features ,Model } from "../component";
+import dynamic from "next/dynamic";
+import Highlights from "@/component/Highlights";
+import Model from "@/component/Model";
+import Features from "@/component/Features";
 
-const page = () => {
+const DynamicHero = dynamic(() => import("../component/Hero"), {
+  ssr: false,
+}) as React.FC; // Use React.FC directly
+
+const Page: React.FC = () => {
   return (
     <main className="bg-black">
-      <Hero />
+      <DynamicHero />
       <Highlights />
-      <Features/>  
-      <Model/>   
+      <Features />
+      <Model />
     </main>
   );
 };
 
-export default page;
+export default Page;

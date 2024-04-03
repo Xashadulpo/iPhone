@@ -1,4 +1,5 @@
-import { Footer, Navbar } from "@/component";
+import Footer from "@/component/Footer";
+import Navbar from "@/component/Navbar";
 import "@/styles/globals.css";
 import LayoutProvider from "@/utils/LayoutProvider";
 export const apple_logo = "/assets/images/Apple_Logo.svg";
