@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import {frameImg} from "./utils/index";
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -33,7 +35,7 @@ module.exports = {
     
       },
       backgroundImage: {
-       
+        "iPhone":frameImg
       },
       screens: {
         'phone': '580px',

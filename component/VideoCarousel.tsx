@@ -5,7 +5,6 @@ import Image from "next/image";
 import { hightlightsSlides } from "@/constant";
 import { pauseImg, playImg, replayImg } from "@/utils";
 import { VideoType } from "@/types";
-import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const VideoCarousel = () => {
@@ -23,7 +22,7 @@ const VideoCarousel = () => {
   const videoSpanRef = useRef<HTMLSpanElement[]>([]);
 
   const { videoId, startPlay, isPlaying, isEnd, isLastVideo } = video;
-
+ 
   useEffect(() => {
     // Initialize ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
@@ -57,6 +56,8 @@ const VideoCarousel = () => {
     };
   }, [isEnd, videoId]);
 
+
+ 
   // when the video switch
   useEffect(() => {
     let currentProgress = 0;

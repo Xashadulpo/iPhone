@@ -1,23 +1,23 @@
-import '@/styles/globals.css';
+import { Footer, Navbar } from "@/component";
+import "@/styles/globals.css";
+import LayoutProvider from "@/utils/LayoutProvider";
+export const apple_logo = "/assets/images/Apple_Logo.svg";
 
-export const apple_logo ="/assets/images/Apple_Logo.svg";
-export const metadata = {
-  title: 'iPhone',
-  description: 'discover car explore',
-}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <title>{metadata.title}</title>
-      <link rel="icon" href={apple_logo}/>
-      <body >
-        {children}
+      <title>iPhone</title>
+      <link rel="icon" href={apple_logo} />
+      <body>
+        <Navbar />
+        <LayoutProvider>{children}</LayoutProvider>
+        <Footer/>
       </body>
     </html>
-  )
+  );
 }

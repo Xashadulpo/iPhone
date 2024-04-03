@@ -6,55 +6,26 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { explore1Img, exploreVideo, explore2Img } from "@/utils";
 import Image from "next/image";
+import { gsapWithanime, gsapWithVideo } from "@/constant/gsapWithAnim";
 
 const Features = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to("#features-title", {
-      opacity: 1,
-      y: 0,
-      scrollTrigger: {
-        trigger: "#features-title",
-        toggleActions: "restart reverse restart reverse",
-        start: "top 85%",
-        scrub: true,
-      },
-    });
-    gsap.to("#exploreVideo", {
-      opacity:2,
-      scrollTrigger: {
-        trigger: "#exploreVideo",
-        toggleActions: "play pause reverse restart",
-        start: "-10% bottom",
-      },
-      onComplete: () => {
-        videoRef.current?.play();
-      },
-    });
-    gsap.to(".g-video", {
-      opacity: 1.6,
-      scale: 1,
-      scrollTrigger: {
-        trigger: ".g-video",
-        start: "top 85%",
-        scrub: 5.5,
-      },
-      ease: "power1",
-    });
-    gsap.to(".g-text", {
-      opacity: 2,
-      y: 0,
-      ease: "power2.inOut",
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".g-text",
-        toggleActions: "restart reverse restart reverse",
-        start: "top 95%",
-        scrub: true,
-      },
-    });
+
+    gsapWithanime("#features-title", { opacity: 1, y: 0 });
+    gsapWithanime(
+      ".g-video",
+      { opacity: 1.6, scale: 1, ease: "power1" },
+      { scrub: 5.5 }
+    );
+    gsapWithanime(
+      ".g-text",
+      { opacity: 2, y: 0, ease: "power2.inOut", duration: 1 },
+      { scrub: true }
+    );
+    gsapWithVideo("#exploreVideo", videoRef);
   }, []);
 
   return (
@@ -107,7 +78,7 @@ const Features = () => {
             {/* text  */}
             <div className="w-full  grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 md:mt-16 ">
               <p className="feature-text g-text">
-                iPhone 15 Pro is {" "}
+                iPhone 15 Pro is{" "}
                 <span className="text-white">
                   the first iPhone to feature an aerospace-grade titanium design
                 </span>
@@ -124,33 +95,6 @@ const Features = () => {
             </div>
           </div>
         </div>
-        <br/>
-        <br/>
-
-        <br/>
-
-        <br/>
-
-        <br/>
-
-        <br/>
-
-        <br/>        <br/>
-
-<br/>
-
-<br/>
-
-<br/>
-
-<br/>
-
-
-        <br/>
-
-        <br/>
-
-
       </div>
     </section>
   );

@@ -1,13 +1,13 @@
 import React from "react";
-import { Navbar, Hero, Highlights,Features } from "../component";
+import { Hero, Highlights,Features ,Model } from "../component";
 
 const page = () => {
   return (
     <main className="bg-black">
-      <Navbar />
       <Hero />
       <Highlights />
-      <Features/>    
+      <Features/>  
+      <Model/>   
     </main>
   );
 };
